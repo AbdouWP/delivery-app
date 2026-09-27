@@ -1,0 +1,126 @@
+{
+  "agents": [
+    {
+      "id": "AGENT-001",
+      "name": "Sarah Connor",
+      "role": "Sales Lead",
+      "region": "North America"
+    },
+    {
+      "id": "AGENT-002",
+      "name": "Alexander Vance",
+      "role": "Account Manager",
+      "region": "Europe"
+    },
+    {
+      "id": "AGENT-003",
+      "name": "Mei-Ling Chen",
+      "role": "Support Specialist",
+      "region": "Asia-Pacific"
+    },
+    {
+      "id": "AGENT-004",
+      "name": "Carlos Rossi",
+      "role": "Field Rep",
+      "region": "Latin America"
+    },
+    {
+      "id": "AGENT-005",
+      "name": "Amina Hassan",
+      "role": "Account Executive",
+      "region": "Middle East"
+    },
+    {
+      "id": "AGENT-006",
+      "name": "Liam O'Connor",
+      "role": "Senior Consultant",
+      "region": "Europe"
+    },
+    {
+      "id": "AGENT-007",
+      "name": "Yuki Tanaka",
+      "role": "Technical Specialist",
+      "region": "Asia-Pacific"
+    },
+    {
+      "id": "AGENT-008",
+      "name": "Elena Rostova",
+      "role": "Sales Operations",
+      "region": "Eastern Europe"
+    },
+    {
+      "id": "AGENT-009",
+      "name": "Marcus Sterling",
+      "role": "Enterprise Manager",
+      "region": "North America"
+    },
+    {
+      "id": "AGENT-010",
+      "name": "Zubair Khan",
+      "role": "Regional Lead",
+      "region": "South Asia"
+    }
+  ],
+  "stores": [
+    {
+      "id": "STORE-101",
+      "name": "Metro Flagship",
+      "city": "New York",
+      "status": "Active"
+    },
+    {
+      "id": "STORE-102",
+      "name": "Westside Hub",
+      "city": "Los Angeles",
+      "status": "Active"
+    },
+    {
+      "id": "STORE-103",
+      "name": "Central Arcade",
+      "city": "London",
+      "status": "Active"
+    },
+    {
+      "id": "STORE-104",
+      "name": "Harbor Outlets",
+      "city": "Sydney",
+      "status": "Under Renovation"
+    },
+    {
+      "id": "STORE-105",
+      "name": "Shinjuku Plaza",
+      "city": "Tokyo",
+      "status": "Active"
+    },
+    {
+      "id": "STORE-106",
+      "name": "Downtown Square",
+      "city": "Toronto",
+      "status": "Active"
+    },
+    {
+      "id": "STORE-107",
+      "name": "Bayside Center",
+      "city": "Singapore",
+      "status": "Active"
+    },
+    {
+      "id": "STORE-108",
+      "name": "Nordic Outlet",
+      "city": "Stockholm",
+      "status": "Inactive"
+    },
+    {
+      "id": "STORE-109",
+      "name": "Al-Nakhil Mall",
+      "city": "Riyadh",
+      "status": "Active"
+    },
+    {
+      "id": "STORE-110",
+      "name": "Gran Via Depot",
+      "city": "Madrid",
+      "status": "Active"
+    }
+  ]
+}
