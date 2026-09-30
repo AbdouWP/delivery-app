@@ -26,11 +26,22 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-import { useNavigate } from "@tanstack/react-router";
+import { useLocation, useNavigate } from "@tanstack/react-router";
 import { CalendarIcon, FunnelIcon } from "@phosphor-icons/react";
+import { memo } from "react";
 
-export function FilterButton({ filters, setFilters, products, agents }) {
+export const FilterButton = memo(({ products, agents }) => {
   const navigate = useNavigate();
+  const { search } = useLocation();
+  const { agent, product } = search;
+
+  const handleFilter = (key, value) =>
+    navigate({
+      search: (prev) => ({
+        ...prev,
+        [key]: value === "all" ? undefined : value,
+      }),
+    });
 
   return (
     <Popover>
@@ -50,56 +61,15 @@ export function FilterButton({ filters, setFilters, products, agents }) {
         <PopoverContent align="bottom">
           <PopoverHeader>Filter By:</PopoverHeader>
           <Select
-            items={["all", "confirmed", "pending", "cancelled", "delivered"]}
-            onValueChange={(value) => {
-              setFilters((prev) => ({ ...prev, status: value }));
-              navigate({
-                search: (prev) => ({
-                  ...prev,
-                  status: value === "all" ? undefined : value,
-                }),
-              });
-            }}
-          >
-            <span>Status</span>
-            <SelectTrigger className="w-full">
-              <SelectValue
-                placeholder={filters.status}
-                className="capitalize"
-              />
-            </SelectTrigger>
-
-            <SelectContent alignItemWithTrigger={false} align="start">
-              <SelectGroup>
-                {["all", "confirmed", "pending", "cancelled", "delivered"].map(
-                  (status) => (
-                    <SelectItem
-                      key={status}
-                      value={status}
-                      className="capitalize"
-                    >
-                      {status}
-                    </SelectItem>
-                  ),
-                )}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-          <Select
             items={agents}
-            onValueChange={(value) => {
-              setFilters((prev) => ({ ...prev, agent: value }));
-              navigate({
-                search: (prev) => ({
-                  ...prev,
-                  agent: value === "all" ? undefined : value,
-                }),
-              });
-            }}
+            onValueChange={(value) => handleFilter("agent", value)}
           >
             <span>Agent</span>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder={filters.agent} className="capitalize" />
+              <SelectValue
+                placeholder={agent || "All"}
+                className="capitalize"
+              />
             </SelectTrigger>
 
             <SelectContent alignItemWithTrigger={false} align="start">
@@ -121,20 +91,12 @@ export function FilterButton({ filters, setFilters, products, agents }) {
           </Select>
           <Select
             items={products}
-            onValueChange={(value) => {
-              setFilters((prev) => ({ ...prev, product: value }));
-              navigate({
-                search: (prev) => ({
-                  ...prev,
-                  product: value === "all" ? undefined : value,
-                }),
-              });
-            }}
+            onValueChange={(value) => handleFilter("product", value)}
           >
             <span>Product</span>
             <SelectTrigger className="w-full">
               <SelectValue
-                placeholder={filters.product}
+                placeholder={product || "All"}
                 className="capitalize"
               />
             </SelectTrigger>
@@ -153,6 +115,29 @@ export function FilterButton({ filters, setFilters, products, agents }) {
                     {product.name}
                   </SelectItem>
                 ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+          <Select onValueChange={(value) => handleFilter("type", value)}>
+            <span>Delivery Type</span>
+            <SelectTrigger className="w-full">
+              <SelectValue
+                placeholder={product || "All"}
+                className="capitalize"
+              />
+            </SelectTrigger>
+
+            <SelectContent alignItemWithTrigger={false} align="start">
+              <SelectGroup>
+                <SelectItem value={"all"} className="capitalize">
+                  all
+                </SelectItem>
+                <SelectItem value={0} className="capitalize">
+                  home
+                </SelectItem>
+                <SelectItem value={1} className="capitalize">
+                  stopdesk
+                </SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -198,4 +183,4 @@ export function FilterButton({ filters, setFilters, products, agents }) {
       </Tooltip>
     </Popover>
   );
-}
+});

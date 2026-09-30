@@ -1,3 +1,5 @@
+import { supabase } from "./supabase";
+
 export const fetchProfile = async () => {
   const token = localStorage.getItem("token");
 
@@ -14,4 +16,17 @@ export const fetchProfile = async () => {
   } catch (error) {
     throw new Error("An error happened!", error.message);
   }
+};
+
+export const refetchOrders = async () => {
+  const { data, error } = await supabase
+    .from("orders")
+    .select()
+    .order("id", { ascending: true });
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+  return data;
 };
